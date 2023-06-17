@@ -1,0 +1,49 @@
+{
+ 
+  "version": 1,
+  "author": "Sharon Njuguna",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "board-esp32-c3-devkitm-1",
+      "id": "esp",
+      "top": -75.71,
+      "left": 55.91,
+      "attrs": { "builder": "rust-nostd-esp" }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn1",
+      "top": 3.51,
+      "left": -131.77,
+      "rotate": 180,
+      "attrs": { "color": "green" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 35.62,
+      "left": 263.84,
+      "rotate": 180,
+      "attrs": { "value": "1000" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": 46.36,
+      "left": 407.35,
+      "attrs": { "color": "red" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "btn1:2.l", "esp:0", "green", [ "h0" ] ],
+    [ "esp:4", "r1:2", "green", [ "v0" ] ],
+    [ "r1:1", "led1:A", "green", [ "v-0.73", "h97.34" ] ],
+    [ "led1:C", "esp:GND.6", "black", [ "v0" ] ],
+    [ "btn1:1.l", "esp:GND.5", "black", [ "h-0.45", "v40.71" ] ]
+  ],
+  "serialMonitor": { "display": "terminal" },
+  "dependencies": {}
+}
